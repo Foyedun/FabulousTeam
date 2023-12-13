@@ -44,3 +44,45 @@ export const formField = {
     },
   ],
 };
+
+
+export const navItems = [
+  {
+    id: 1,
+    label: 'Home',
+    url: '/',
+  },
+  {
+    id: 2,
+    label: 'Courses',
+    url: '/courses',
+  },
+  {
+    id: 3,
+    label: 'Careers',
+    url: '/careers',
+  },
+  {
+    id: 4,
+    label: 'Blog',
+    url: '/blog',
+  },
+  {
+    id: 5,
+    label: 'About Us',
+    url: '/about-us',
+  },
+];
+
+export const navItemLoginAndSignup = [
+  {
+    id: 6,
+    label: 'Login',
+    url: '/login',
+  },
+  {
+    id: 7,
+    label: 'Sign Up',
+    url: '/register',
+  },
+];

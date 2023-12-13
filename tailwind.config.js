@@ -4,11 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        green: '#57bbbd',
-        lightGreen: '#92d6d6',
+        green: '#57BBBD',
+        lightGreen: '#92D6D6',
         skyBlue: '#4FB9E7',
         darkBlue: '#252641',
         blueGreen: '#EBF5FE',
+        footerText: '#B2B3CF',
       },
       height: {
         12.5: '3rem', //50px

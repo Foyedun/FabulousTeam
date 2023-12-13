@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react';
+import MobileMenu from './MobileNavbar';
+import DefaultNavbar from './DefaultNavbar';
 
 const Navbar = () => {
-  return (
-    <div className=''>
-        I am navitem
-    </div>
-  )
-}
+  const [displayMenu, setDisplayMenu] = useState(false);
 
-export default Navbar
+  const toggleMenu = () => {
+    setDisplayMenu(!displayMenu);
+  };
+
+  return (
+    <>
+      <nav className='box-border px-2 relative bg-green md:px-[10%]'>
+        <DefaultNavbar displayMenu={displayMenu} toggleMenu={toggleMenu} />
+      </nav>
+      {/* Mobile menu content */}
+      <MobileMenu displayMenu={displayMenu} toggleMenu={toggleMenu} />
+    </>
+  );
+};
+
+export default Navbar;
