@@ -86,3 +86,31 @@ export const navItemLoginAndSignup = [
     url: '/register',
   },
 ];
+
+export const successStory = [
+  {
+    id: 1,
+    value: '15K+',
+    label: 'Students',
+  },
+  {
+    id: 2,
+    value: '75%',
+    label: 'Total success',
+  },
+  {
+    id: 3,
+    value: '35',
+    label: 'Main questions',
+  },
+  {
+    id: 4,
+    value: '26',
+    label: 'Chief experts',
+  },
+  {
+    id: 5,
+    value: '16',
+    label: 'Years of experience',
+  },
+];

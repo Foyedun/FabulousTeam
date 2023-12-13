@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formField } from '@/constant/index.js';
-import {SiteLogo} from '@/assets/svgs/SiteIcons.jsx';
+import { SiteLogo } from '@/assets/svgs/SiteIcons.jsx';
+import Button from './Button.jsx';
 
 const Footer = () => {
   const [formData, setFormData] = useState({ email: '' });
@@ -45,11 +46,15 @@ const Footer = () => {
               onChange={handleChange}
               required
             />
-            <button
-              className='bg-green text-white h-12.5 w-2/5 md:w-1/5 rounded-full'
-              onClick={handleSubmit}>
-              Subscribe
-            </button>
+            <Button
+              bgColor={'bg-green'}
+              textColor={'text-white'}
+              height={'h-12.5'}
+              width={'w-2/5'}
+              radius={'rounded-full'}
+              text={'Subscribe'}
+              onClick={handleSubmit}
+            />
           </form>
         </div>
         <div className='flex mx-auto text-sm'>
@@ -57,7 +62,9 @@ const Footer = () => {
           <p className='after:content-["|"] after:mx-2 '>Privacy Policy</p>
           <p className=''>Terms & Conditions</p>
         </div>
-        <p className='text-center m-0 text-sm'>&copy; 2023 dacdigitals </p>
+        <p className='text-center m-0 text-sm'>
+          &copy; 2023 Arinze Ezeokwuegbu{' '}
+        </p>
       </div>
     </footer>
   );

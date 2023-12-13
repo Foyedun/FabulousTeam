@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { navItems, navItemLoginAndSignup } from '@/constant/index.js';
-import { SiteLogo, HamburgerMenu } from '@/assets/svgs/SiteIcons.jsx';
+import { HamburgerMenu } from '@/assets/svgs/SiteIcons.jsx';
+import ClickableSiteLogo from './ClickableSiteLogo.jsx';
 
-const DefaultNavbar = ({toggleMenu, displayMenu}) => {
+const DefaultNavbar = ({ toggleMenu, displayMenu }) => {
   return (
     <ul className='flex items-center text-white m-0 p-0'>
-      <li className='mr-auto'>
-        <SiteLogo />
-      </li>
+      <ClickableSiteLogo style={'mr-auto'}/>
       {navItems.map((navItem) => (
         <Link
           to={navItem.url}

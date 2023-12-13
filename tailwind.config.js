@@ -10,11 +10,12 @@ export default {
         darkBlue: '#252641',
         blueGreen: '#EBF5FE',
         footerText: '#B2B3CF',
+        orange: '#F48C06',
       },
       height: {
         12.5: '3rem', //50px
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-gradient-text')],
 };
