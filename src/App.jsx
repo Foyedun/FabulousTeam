@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home.jsx"
-import Form from "./pages/Form.jsx"
-import ForgotPassword from "./pages/ForgotPassword.jsx"
+import Home from "@/pages/Home.jsx"
+import Form from "@/pages/Form.jsx"
+import ForgotPassword from "@/pages/ForgotPassword.jsx"
 
 function App() {
 
