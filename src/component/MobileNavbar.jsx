@@ -8,7 +8,7 @@ import { SiteLogo } from '@/assets/svgs/SiteIcons.jsx'
 const MobileMenu = ({displayMenu, toggleMenu}) => {
   return (
     displayMenu && (
-        <div className='box-border fixed top-0 flex z-50 md:hidden w-full bg-black pb-10 h-screen'>
+        <div className='box-border fixed top-0 flex z-50 md:hidden w-full bg-black pb-[50px] h-screen'>
           <ul className='flex flex-col flex-grow justify-between text-white m-0 p-0'>
             <div>
               <div className='flex justify-between items-center'>
