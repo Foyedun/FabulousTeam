@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import FormInput from '@/component/FormInput.jsx';
 import { formField } from '@/constant/index.js';
-// import Footer from '../component/Footer.jsx';
 
 const ForgotPassword = () => {
   const [formData, setFormData] = useState({ email: '' });
@@ -45,7 +44,6 @@ const ForgotPassword = () => {
             Get Verification Code{' '}
           </button>
         </form>
-        {/* <Footer/> */}
       </div>
     </>
   );

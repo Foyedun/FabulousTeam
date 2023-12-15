@@ -1,15 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 import teenGirl from '@/assets/teenage_girl_img.png';
 import chatCluster from '@/assets/message_cluster_img.png';
-import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
     <div className='flex flex-col md:flex-row justify-between gap-5 w-full md:rounded-bl-[20%] md:rounded-br-[20%] px-2 md:px-[10%] bg-green'>
       <div className='flex items-center w-full md:w-1/2'>
         <div className='flex flex-col gap-4 w-full  p-10 pl-0 pr-10'>
-          {/*border border-red-700*/}
           <h1 className='font-semibold text-4xl md:text-5xl text-white'>
             <span className='text-orange'>Studying</span> online is now much
             easier
@@ -21,14 +20,11 @@ const HeroSection = () => {
 
           <Link to='/register'>
             <Button
-              bgColor={'bg-lightGreen'}
-              textColor={'text-white'}
-              height={'h-10'}
-              width={'w-2/4'}
-              radius={'rounded-full'}
-              text={'Join for free'}
-              lScreen={'md:w-1/4'}
-            />
+              style={
+                'bg-lightGreen text-white h-10 w-2/4 rounded-full md:w-1/4'
+              }>
+              Join for free
+            </Button>
           </Link>
         </div>
       </div>

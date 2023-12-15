@@ -8,6 +8,7 @@ export default {
         lightGreen: '#92D6D6',
         skyBlue: '#4FB9E7',
         darkBlue: '#252641',
+        mediumDarkBlue: '#2F327D',
         blueGreen: '#EBF5FE',
         footerText: '#B2B3CF',
         orange: '#F48C06',

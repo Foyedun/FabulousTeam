@@ -1,25 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Button = ({
-  bgColor,
-  textColor,
-  height,
-  width,
-  radius,
-  text,
-  lScreen = 'md:w-1/5',
-  onClick,
-}) => {
+const Button = ({ style, children, onClick }) => {
   return (
-    <button
-      className={`${bgColor} ${textColor} ${height} ${width} ${radius} ${lScreen}`}
-      onClick={onClick}>
-      {text}
+    <button className={`${style}`} onClick={onClick}>
+      {children}
     </button>
   );
 };
 
-
-
-
-export default Button
+export default Button;

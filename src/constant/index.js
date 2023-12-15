@@ -1,3 +1,9 @@
+import BillingIcon from '@/assets/svgs/BillingIcon.svg';
+import ScheduleIcon from '@/assets/svgs/ScheduleIcon.svg';
+import PeopleIcon from '@/assets/svgs/PeopleIcon.svg';
+import Instructor from '@/assets/instructor.png';
+import Student from '@/assets/student.png';
+
 export const formField = {
   login: [
     {
@@ -44,7 +50,6 @@ export const formField = {
     },
   ],
 };
-
 
 export const navItems = [
   {
@@ -112,5 +117,41 @@ export const successStory = [
     id: 5,
     value: '16',
     label: 'Years of experience',
+  },
+];
+
+export const cloudSolutions = [
+  {
+    id: 1,
+    image: BillingIcon,
+    heading: 'Online Billing, Invoicing, & Contracts',
+    text: 'Simple and secure control of your organization’s financial and legal transactions. Send customized invoices and contracts',
+  },
+  {
+    id: 2,
+    image: ScheduleIcon,
+    heading: 'Easy Scheduling & Attendance Tracking',
+    text: 'Schedule and reserve classrooms at one campus or multiple campuses. Keep detailed records of student attendance',
+  },
+  {
+    id: 3,
+    image: PeopleIcon,
+    heading: 'Customer Tracking',
+    text: 'Automate and track emails to individuals or groups. Skilline’s built-in system helps organize your organization ',
+  },
+];
+
+export const userType = [
+  {
+    id: 1,
+    image: Instructor,
+    type: 'FOR INSTRUCTORS',
+    buttonText: 'Start a class today',
+  },
+  {
+    id: 2,
+    image: Student,
+    type: 'FOR STUDENTS',
+    buttonText: 'Enter access code',
   },
 ];

@@ -47,14 +47,10 @@ const Footer = () => {
               required
             />
             <Button
-              bgColor={'bg-green'}
-              textColor={'text-white'}
-              height={'h-12.5'}
-              width={'w-2/5'}
-              radius={'rounded-full'}
-              text={'Subscribe'}
-              onClick={handleSubmit}
-            />
+              style={'bg-green text-white h-12.5 w-2/5 rounded-full'}
+              onClick={handleSubmit}>
+              Subscribe
+            </Button>
           </form>
         </div>
         <div className='flex mx-auto text-sm'>
