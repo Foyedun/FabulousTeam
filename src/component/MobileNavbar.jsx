@@ -9,7 +9,7 @@ const MobileMenu = ({displayMenu, toggleMenu}) => {
   return (
     displayMenu && (
       <div
-        className='box-border fixed top-0 flex z-40 md:hidden w-full bg-black pb-[50px] h-screen transition ease-in-out duration-500'
+        className='box-border fixed top-0 flex z-40 md:hidden w-full bg-black pb-[50px] h-full transition ease-in-out duration-500'
         style={{ height: displayMenu ? '100%' : '0' }}>
         <ul className='flex flex-col flex-grow justify-between text-white m-0 p-0'>
           <div>
