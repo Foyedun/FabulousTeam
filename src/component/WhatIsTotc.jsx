@@ -27,7 +27,7 @@ const WhatIsTotc = () => {
             <img
               src={user.image}
               alt='instructor pic'
-              className='object-contain brightness-75'
+              className='object-cover w-full h-full brightness-75'
             />
             <div className='absolute z-10'>
               <h2 className='text-semibold text-xl text-white text-center'>

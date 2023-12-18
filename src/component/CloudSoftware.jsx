@@ -31,7 +31,7 @@ const CloudSoftware = () => {
               <h2 className='text-mediumDarkBlue font-medium text-xl'>
                 {cloudSolution.heading}
               </h2>
-              <p className='text-footerText grow'>{cloudSolution.text}</p>
+              <p className='text-grayText grow'>{cloudSolution.text}</p>
             </div>
           </div>
         ))}

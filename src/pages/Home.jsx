@@ -5,6 +5,10 @@ import HeroSection from '@/component/HeroSection.jsx';
 import OurSuccess from '@/component/OurSuccess.jsx';
 import CloudSoftware from '@/component/CloudSoftware.jsx';
 import WhatIsTotc from '@/component/WhatIsTotc.jsx';
+import WhatYouCanDoWithTotc from '@/component/WhatYouCanDoWithTotc.jsx';
+import OurFeatures from '@/component/OurFeatures.jsx';
+import ExploreCourse from '@/component/ExploreCourse.jsx';
+import Testimonial from '@/component/Testimonial.jsx';
 
 const Home = () => {
   return (
@@ -12,8 +16,12 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <OurSuccess />
-      <CloudSoftware/>
-      <WhatIsTotc/>
+      <CloudSoftware />
+      <WhatIsTotc />
+      <WhatYouCanDoWithTotc />
+      <OurFeatures />
+      <ExploreCourse />
+      <Testimonial />
       <Footer />
     </>
   );

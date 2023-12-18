@@ -12,6 +12,7 @@ export default {
         blueGreen: '#EBF5FE',
         footerText: '#B2B3CF',
         orange: '#F48C06',
+        grayText: '#696984',
       },
       height: {
         12.5: '3rem', //50px

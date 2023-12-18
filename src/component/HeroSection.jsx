@@ -13,7 +13,7 @@ const HeroSection = () => {
             <span className='text-orange'>Studying</span> online is now much
             easier
           </h1>
-          <p className='text-white text-sm font-light w-full md:w-3/5'>
+          <p className='text-white text-base font-light w-full md:w-4/5'>
             TOTC is an interesting platform that will teach you more in an
             interactive way
           </p>

@@ -7,7 +7,7 @@ const OurSuccess = () => {
   return (
     <ContainerSkeleton>
       <H1>Our Success</H1>
-      <p className='font-light w-full md:w-3/4 text-sm text-center mb-4'>
+      <p className='font-light w-full md:w-3/4 text-base text-center mb-4'>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non obcaecati,
         voluptate modi eum nobis architecto quaerat recusandae nam voluptatum!
         Architecto expedita illum assumenda aliquid ullam a officia ut adipisci
