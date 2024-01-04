@@ -3,6 +3,10 @@ import ScheduleIcon from '@/assets/svgs/ScheduleIcon.svg';
 import PeopleIcon from '@/assets/svgs/PeopleIcon.svg';
 import Instructor from '@/assets/instructor.png';
 import Student from '@/assets/student.png';
+  import newImgTwo from '@/assets/news_img_2.png';
+  import newImgThree from '@/assets/news_img_3.png';
+  import newImgFour from '@/assets/news_img_4.png';
+ 
 
 export const formField = {
   login: [
@@ -153,5 +157,35 @@ export const userType = [
     image: Student,
     type: 'FOR STUDENTS',
     buttonText: 'Enter access code',
+  },
+];
+
+export const newsList = [
+  {
+    id: 1,
+    img: newImgTwo,
+    badge: 'Press Release',
+    heading:
+      'Class adds $30 million to its balance sheet for a Zoom-friendly edtech solution',
+    excerpt:
+      'Class, launched less than a year ago by Blackboard co-founder Michael Chasen, integrates exclusively...',
+  },
+  {
+    id: 2,
+    img: newImgThree,
+    badge: 'News',
+    heading:
+      'Zoom’s earliest investors are betting millions on a better Zoom for schools',
+    excerpt:
+      'Zoom was never created to be a consumer product. Nonetheless, the...',
+  },
+  {
+    id: 3,
+    img: newImgFour,
+    badge: 'News',
+    heading:
+      'Former Blackboard CEO Raises $16M to Bring LMS Features to Zoom Classrooms',
+    excerpt:
+      'This year, investors have reaped big financial returns from betting on Zoom...',
   },
 ];

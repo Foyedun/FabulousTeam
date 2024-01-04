@@ -7,7 +7,6 @@ import CloudSoftware from '@/component/CloudSoftware.jsx';
 import WhatIsTotc from '@/component/WhatIsTotc.jsx';
 import WhatYouCanDoWithTotc from '@/component/WhatYouCanDoWithTotc.jsx';
 import OurFeatures from '@/component/OurFeatures.jsx';
-import ExploreCourse from '@/component/ExploreCourse.jsx';
 import Testimonial from '@/component/Testimonial.jsx';
 import LatestNewsAndResources from '@/component/LatestNewsAndResources.jsx';
 
@@ -21,7 +20,6 @@ const Home = () => {
       <WhatIsTotc />
       <WhatYouCanDoWithTotc />
       <OurFeatures />
-      <ExploreCourse />
       <Testimonial />
       <LatestNewsAndResources />
       <Footer />

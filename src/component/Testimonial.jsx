@@ -5,7 +5,7 @@ import { ChevronRight } from '@/assets/svgs/SiteIcons.jsx';
 
 const Testimonial = () => {
   return (
-    <div className='relative flex flex-col justify-evenly md:flex-row  w-full py-12 px-2 md:px-[10%] my-4'>
+    <div className='relative flex flex-col justify-between md:flex-row  w-full py-12 px-2 md:px-[10%] my-4'>
       <div className='flex flex-col w-full md:w-1/2 gap-5 md:mr-5'>
         <span className='relative max-w-[400px] text-center text-grayText before:content-[" "] before:h-[2px] before:w-[110px] md:before:w-[130px] before:bg-grayText before:absolute before:top-1/2 before:left-0'>
           Testimonial
