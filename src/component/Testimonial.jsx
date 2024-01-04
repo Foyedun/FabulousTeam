@@ -7,7 +7,7 @@ const Testimonial = () => {
   return (
     <div className='relative flex flex-col justify-evenly md:flex-row  w-full py-12 px-2 md:px-[10%] my-4'>
       <div className='flex flex-col w-full md:w-1/2 gap-5 md:mr-5'>
-        <span className='relative max-w-[400px] text-center text-grayText before:content-[" "] before:h-[2px] before:w-[130px] before:bg-grayText before:absolute before:top-1/2 before:left-0'>
+        <span className='relative max-w-[400px] text-center text-grayText before:content-[" "] before:h-[2px] before:w-[110px] md:before:w-[130px] before:bg-grayText before:absolute before:top-1/2 before:left-0'>
           Testimonial
         </span>
         <h1 className='text-mediumDarkBlue font-bold text-3xl'>
@@ -46,8 +46,8 @@ const Testimonial = () => {
           <ChevronRight />
         </div>
       </div>
-      <div className='absolute flex flex-col justify-between md:left-2/3 md:right-0 bottom-0 w-[350px]  md:w-[400px] h-[200px] md:h-[200px] shadow-lg rounded-2xl border-l-8 border-l-orange p-3 md:p-5 bg-white'>
-        <div className='pl-2 md:pl-4 border border-y-0 border-r-0 text-grayText border-l-grayText'>
+      <div className='absolute flex flex-col justify-between md:left-2/3 md:right-0 bottom-0 w-[320px] sm:text-purple-500 md:w-[400px] h-[200px] md:h-[200px] shadow-lg rounded-2xl border-l-8 border-l-orange p-3 md:p-5 bg-white'>
+        <div className='pl-2 md:pl-4 border border-y-0 border-r-0 text-grayText border-l-grayText text-sm md:text-base'>
           "Thank you so much for your help. It's exactly what I've been looking
           for. You won't regret it. It really saves me time and effort. TOTC is
           exactly what our business has been lacking."

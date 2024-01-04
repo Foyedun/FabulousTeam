@@ -9,6 +9,7 @@ import WhatYouCanDoWithTotc from '@/component/WhatYouCanDoWithTotc.jsx';
 import OurFeatures from '@/component/OurFeatures.jsx';
 import ExploreCourse from '@/component/ExploreCourse.jsx';
 import Testimonial from '@/component/Testimonial.jsx';
+import LatestNewsAndResources from '@/component/LatestNewsAndResources.jsx';
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <OurFeatures />
       <ExploreCourse />
       <Testimonial />
+      <LatestNewsAndResources />
       <Footer />
     </>
   );
