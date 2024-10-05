@@ -1,6 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.container {
+  @apply mx-auto w-[90%] ;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce {
+  animation: bounce 10s infinite; /* Animation duration is 0.5 seconds */
+}
+
+.bounce-active {
+  animation: bounce 10s forwards; /* Play for 5 seconds when active */
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards; /* Fade in effect */
+}
+
+.fade-out {
+  animation: fadeOut s forwards; /* Fade out effect */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start transparent */
+  }
+  to {
+    opacity: 1; /* End fully visible */
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; /* Start fully visible */
+  }
+  to {
+    opacity: 0; /* End transparent */
+  }
+}
+
 
 
 *{

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { formField } from '@/constant/index.js';
 import { useLocationCust } from '@/customHook/useLocation.js';
-import LoginOrRegisterFormButtonSwitch from '@/component/LoginOrRegisterFormButtonSwitch.jsx';
 import FormInput from '@/component/FormInput.jsx';
 import FormImage from '@/component/FormImage.jsx';
 import ConfirmationPopup from '@/component/ConfirmationPopup.jsx';

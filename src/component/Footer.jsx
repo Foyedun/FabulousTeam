@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formField } from '@/constant/index.js';
-import { SiteLogo } from '@/assets/svgs/SiteIcons.jsx';
+import SiteLogo from '../assets/itoko.png'; // Import your logo image
 import Button from './Button.jsx';
 
 const Footer = () => {
@@ -12,23 +12,25 @@ const Footer = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value.trim() }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
   };
+
   return (
-    <footer className='flex justify-center bg-darkBlue'>
+    <footer className='flex justify-center bg-black md:px-[10%]'> {/* Changed background color to white */}
       <div className='flex flex-col px-2 py-4 md:px-0 gap-4 w-full md:w-1/2 text-footerText'>
         <div className='flex justify-center items-center gap-4'>
           <span className='border border-t-0 border-l-0 border-b-0 border-r-footerText pr-4'>
             <Link to='/'>
-              <SiteLogo width='100' />
+              <img src={SiteLogo} alt="Site Logo" width='100' /> {/* Use your logo here */}
             </Link>
           </span>
 
           <div className='flex flex-col'>
-            <p className='p'>virtual class</p>
-            <p className='p'>for zoom</p>
+            <p className='p'>for more</p>
+            <p className='p'>information</p>
           </div>
         </div>
         <div>
@@ -47,7 +49,7 @@ const Footer = () => {
               required
             />
             <Button
-              style={'bg-green text-white h-12.5 w-2/5 rounded-full'}
+              style={'bg-pantone-555c text-white h-12.5 w-2/5 rounded-full'}
               onClick={handleSubmit}>
               Subscribe
             </Button>
@@ -59,7 +61,7 @@ const Footer = () => {
           <p className=''>Terms & Conditions</p>
         </div>
         <p className='text-center m-0 text-sm'>
-          &copy; 2023 Arinze Ezeokwuegbu{' '}
+          &copy; 2024 Fabulous Oyedun {/* Updated copyright name */}
         </p>
       </div>
     </footer>

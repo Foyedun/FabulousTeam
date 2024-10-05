@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='box-border px-2 relative bg-green md:px-[10%]'>
+      <nav className='box-border px-2 relative bg-black md:px-[10%]'>
         <DefaultNavbar displayMenu={displayMenu} toggleMenu={toggleMenu} />
       </nav>
       {/* Mobile menu content */}

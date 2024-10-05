@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        'pantone-274': '#1E1A78',
+      'pantone-555c': '#2A4B2B',
         green: '#57BBBD',
         lightGreen: '#92D6D6',
         skyBlue: '#4FB9E7',
