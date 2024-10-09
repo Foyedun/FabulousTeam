@@ -6,7 +6,10 @@ import Student from '@/assets/student.png';
 import newImgTwo from '@/assets/news_img_2.png';
 import newImgThree from '@/assets/news_img_3.png';
 import newImgFour from '@/assets/news_img_4.png';
-
+import schoolImage from '../assets/school.jpg';
+import helpImage from '../assets/help.jpg';
+import dedicatingImage from '../assets/dedicating.jpg';
+import drinkingImage from '../assets/drinking.jpeg';
 export const formField = {
   login: [
     {
@@ -194,3 +197,32 @@ export const newsList = [
       'Hear from individuals who have benefited from our programs and see how ITOKO AID is making a difference...',
   },
 ];
+
+export const sectors=[
+  {
+    heading: "Education Sector",
+    note: "Help us provide quality education to children who need it the most. Your support will build schools, provide resources, and train teachers.",
+    img: schoolImage,
+    path:"/education-donation"
+  },
+  {
+    heading: "Medical Sector",
+    note: "Provide medical care and life-saving treatments for underserved communities. Every dollar can bring healing to those in pain.",
+    img: helpImage,
+    path: "/medical-donation"
+  },
+  {
+    heading: "Helping Kids Sector",
+    note: "Ensure that every child has access to nutritious meals, clothing, and a safe environment to grow and thrive. Let’s give them a brighter future.",
+    img: dedicatingImage,
+    path: "/kids-donation"
+  },
+  {
+    heading: "Well-being Sector",
+    note: "Access to clean water is a basic human right. With your help, we can bring clean and safe drinking water to entire communities.",
+    img: drinkingImage,
+    path: "/wellbeing-donation"
+  },
+]
+
+
