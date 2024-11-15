@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import logo from '@/assets/itoko.png';
+import logo from '@/assets/logo.png';
 import { TiThMenuOutline } from "react-icons/ti";
 import { IoClose } from 'react-icons/io5';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const Header = () => {
   const [nav, setNav] = useState(false);
   const handleNav = () => {
     setNav(!nav);
   };
   return (
-    <nav className="bg-primary text-white fixed w-full z-[2]">
-      <div className="flex container justify-between items-center">
-        <Link to="/">
+    <nav className="bg-black text-white fixed w-full z-[2] pt-7">
+      <div className="flex container justify-center items-center pb-5 space-x-8">
+        <Link to="/" className="mr-auto">
           <img src={logo} alt="logo" className="w-[85px]" />
         </Link>
         <ul className="hidden lg:flex items-center gap-8">
@@ -19,20 +19,27 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Mission</Link>
+            <Link to="/">Contact</Link>
           </li>
           <li>
             <Link to="/">About Us</Link>
           </li>
           <li>
-            <Link to="/">How it works</Link>
+            <Link
+              to="/"
+              className="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition"
+            >
+              Donate Now
+            </Link>
           </li>
         </ul>
         <TiThMenuOutline
-          className="text-white text-2xl lg:hidden"
+          className="text-white text-2xl lg:hidden ml-auto"
           onClick={handleNav}
         />
       </div>
+
+      {/* Mobile Navigation */}
       <div
         style={{
           transition: "all 0.3s ease",
@@ -40,7 +47,7 @@ const Header = () => {
         }}
         className={
           nav
-            ? "bg-primary fixed z-[4] top-0 right-0 w-full h-screen text-white"
+            ? "bg-primary fixed z-[4] top-0 right-0 w-full h-screen text-white bg-black"
             : "hidden"
         }
       >
@@ -53,25 +60,26 @@ const Header = () => {
         <ul className="text-base font-medium">
           <li className="px-[15px] py-[20px] leading-[24px] border-y border-gray">
             <Link to="/" className="leading-4" onClick={handleNav}>
-              Home{" "}
+              Home
             </Link>
           </li>
-
           <li className="px-[15px] py-[20px] leading-[24px]">
             <Link to="/mission" className="leading-4" onClick={handleNav}>
-              Mission
+              Contact
             </Link>
           </li>
-
           <li className="px-[15px] py-[20px] leading-[24px] border-y border-gray">
             <Link to="/about-us" className="leading-4" onClick={handleNav}>
               About Us
             </Link>
           </li>
-
           <li className="px-[15px] py-[20px] leading-[24px] border-b border-gray">
-            <Link to="/" className="leading-4" onClick={handleNav}>
-              How it works
+            <Link
+              to="/"
+              className="bg-primary text-white px-4 py-2 rounded-full inline-block hover:bg-secondary transition leading-4"
+              onClick={handleNav}
+            >
+              Donate Now
             </Link>
           </li>
         </ul>
