@@ -1,8 +1,8 @@
-import logo from '@/assets/logo.png';
+import logo from "@/assets/logo.png";
 import { TiThMenuOutline } from "react-icons/ti";
-import { IoClose } from 'react-icons/io5';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { IoClose } from "react-icons/io5";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 const Header = () => {
   const [nav, setNav] = useState(false);
   const handleNav = () => {
@@ -19,10 +19,10 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Contact</Link>
+            <NavLink to="/contact">Contact</NavLink>
           </li>
           <li>
-            <Link to="/">About Us</Link>
+            <NavLink to="/about-us">About Us</NavLink> {/* Correct route */}
           </li>
           <li>
             <Link
@@ -47,7 +47,7 @@ const Header = () => {
         }}
         className={
           nav
-            ? "bg-primary fixed z-[4] top-0 right-0 w-full h-screen text-white bg-black"
+            ? "bg-primary fixed z-[4] top-0 right-0 w-full h-screen text-white"
             : "hidden"
         }
       >
@@ -64,14 +64,14 @@ const Header = () => {
             </Link>
           </li>
           <li className="px-[15px] py-[20px] leading-[24px]">
-            <Link to="/mission" className="leading-4" onClick={handleNav}>
+            <NavLink to="/contact" className="leading-4" onClick={handleNav}>
               Contact
-            </Link>
+            </NavLink>
           </li>
           <li className="px-[15px] py-[20px] leading-[24px] border-y border-gray">
-            <Link to="/about-us" className="leading-4" onClick={handleNav}>
+            <NavLink to="/about-us" className="leading-4" onClick={handleNav}>
               About Us
-            </Link>
+            </NavLink>
           </li>
           <li className="px-[15px] py-[20px] leading-[24px] border-b border-gray">
             <Link
@@ -86,6 +86,6 @@ const Header = () => {
       </div>
     </nav>
   );
-}
+};
 
-export default Header
+export default Header;
