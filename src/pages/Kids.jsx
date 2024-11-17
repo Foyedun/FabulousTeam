@@ -128,7 +128,7 @@ const HelpingKidsSector = () => {
             />
           </div>
 
-          {/* Card Details */}
+         {/* Card Details */}
           <div className="mb-4">
             <label htmlFor="cardNumber" className="block font-medium mb-2">
               Card Number
@@ -139,6 +139,9 @@ const HelpingKidsSector = () => {
               name="card_number"
               className="w-full p-2 border rounded-lg"
               placeholder="1234 5678 9012 3456"
+              maxLength="16" // Limits the input to 3 characters
+              pattern="\d{16}" // Ensures only 3 numeric digits are allowed
+              title="The CVV must be exactly 16 digits"
               required
             />
           </div>
@@ -155,6 +158,9 @@ const HelpingKidsSector = () => {
                 name="expiry_month"
                 className="w-full p-2 border rounded-lg"
                 placeholder="MM"
+                maxLength="2" // Limits the input to 3 characters
+                pattern="\d{2}" // Ensures only 3 numeric digits are allowed
+                title="The CVV must be exactly 2 digits"
                 required
               />
             </div>
@@ -168,6 +174,9 @@ const HelpingKidsSector = () => {
                 name="expiry_year"
                 className="w-full p-2 border rounded-lg"
                 placeholder="YYYY"
+                maxLength="4" // Limits the input to 3 characters
+                pattern="\d{4}" // Ensures only 3 numeric digits are allowed
+                title="The CVV must be exactly 4 digits"
                 required
               />
             </div>
@@ -179,11 +188,14 @@ const HelpingKidsSector = () => {
               Security Code (CVV)
             </label>
             <input
-              type="text"
+              type="password" // Keeps the input hidden
               id="securityCode"
               name="security_code"
               className="w-full p-2 border rounded-lg"
               placeholder="Enter CVV"
+              maxLength="3" // Limits the input to 3 characters
+              pattern="\d{3}" // Ensures only 3 numeric digits are allowed
+              title="The CVV must be exactly 3 digits"
               required
             />
           </div>

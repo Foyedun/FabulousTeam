@@ -23,7 +23,7 @@ const DonationCategories = () => {
               <img
                 src={sector.img}
                 alt={sector.heading}
-                className="w-full h-[231px] sm:h-[540px] xl:h-[540px] object-cover"
+                className="w-full h-[350px] sm:h-[540px] xl:h-[540px] object-cover"
               />
             </Link>
             <h3 className="text-2xl font-semibold pt-2">{sector.heading}</h3>
