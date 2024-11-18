@@ -24,14 +24,7 @@ const Header = () => {
           <li>
             <NavLink to="/about-us">About Us</NavLink> {/* Correct route */}
           </li>
-          <li>
-            <Link
-              to="/"
-              className="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition"
-            >
-              Donate Now
-            </Link>
-          </li>
+          
         </ul>
         <TiThMenuOutline
           className="text-white text-2xl lg:hidden ml-auto"
@@ -73,15 +66,7 @@ const Header = () => {
               About Us
             </NavLink>
           </li>
-          <li className="px-[15px] py-[20px] leading-[24px] border-b border-gray">
-            <Link
-              to="/"
-              className="bg-primary text-white px-4 py-2 rounded-full inline-block hover:bg-secondary transition leading-4"
-              onClick={handleNav}
-            >
-              Donate Now
-            </Link>
-          </li>
+          
         </ul>
       </div>
     </nav>
