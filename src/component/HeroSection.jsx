@@ -29,7 +29,7 @@ const HeroSection = () => {
         animate={{ x: "0%" }}
         exit={{ x: "100%" }}
         transition={{
-          duration: 2,
+          duration: 3,
           ease: "easeInOut",
         }}
       >
