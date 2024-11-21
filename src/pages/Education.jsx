@@ -1,9 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../component/Header";
+import axios from "axios";
 import school1 from "../assets/school1.jpg";
 import school3 from "../assets/school3.jpg";
 
 const Education = () => {
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email_address: "",
+    phone_number: "",
+    amount: "",
+    cardNumber: "",
+    expiryMonth: "",
+    expiryYear: "",
+    securityCode: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+
+    const {
+      first_name,
+      last_name,
+      email_address,
+      phone_number,
+      amount,
+      cardNumber,
+      expiryMonth,
+      expiryYear,
+      securityCode,
+    } = formData;
+
+    const data = {
+      service_payload: {
+        first_name,
+        last_name,
+        email_address,
+        phone_number,
+        amount: parseFloat(amount),
+        transaction_reference: "RuxsXYCEBGHTEFIKKCDTICDEFCX", // Generate unique reference for production
+        currency: "USD", // Use appropriate currency
+        description: "Donation for Education",
+        card: {
+          expiryMonth,
+          expiryYear,
+          securityCode,
+          cardNumber,
+        },
+        callback_url:
+          "https://webhook.site/ed6dd427-dfcf-44a3-8fa7-4cc1ab55e029",
+      },
+    };
+
+    const config = {
+      method: "post",
+      url: "https://cards-live.78financials.com/card_charge/",
+      headers: {
+        Authorization:
+          "Payaza UFo3OC1QS0xJVkUtRjMwODcwNUMtRkY2NC00MEJCLTg1OUUtM0ZCQUI4MTJBNzdC",
+        "Content-Type": "application/json",
+      },
+      data,
+    };
+
+    try {
+      const response = await axios.request(config);
+      setMessage("Payment successful! Thank you for your contribution.");
+    } catch (error) {
+      setMessage("Payment failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -33,166 +113,74 @@ const Education = () => {
           />
         </div>
 
-        {/* Donation Call to Action */}
-        <h1 className="text-2xl font-semibold text-center mb-4 text-primary">
-          Make a Difference Today
-        </h1>
-        <p className="text-center mb-2">
-          Your contribution can bring lasting change to Adebowale Abo Aba. By
-          supporting education, healthcare, and community well-being.
-        </p>
-        <p className="text-center mb-8 text-primary font-bold pt-10 ">
-          Fill out the form below to join us in transforming lives.
-        </p>
-
-        {/* Payment Form */}
         <h2 className="text-2xl font-semibold text-center text-primary mb-6">
           Make a Secure Payment
         </h2>
-        <form className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-2xl">
-          {/* First Name */}
-          <div className="mb-4">
-            <label htmlFor="firstName" className="block font-medium mb-2">
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="first_name"
-              className="w-full p-2 border rounded-lg"
-              placeholder="Enter First Name"
-              required
-            />
-          </div>
 
-          {/* Last Name */}
-          <div className="mb-4">
-            <label htmlFor="lastName" className="block font-medium mb-2">
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="last_name"
-              className="w-full p-2 border rounded-lg"
-              placeholder="Enter Last Name"
-              required
-            />
-          </div>
+        <form
+          className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-2xl"
+          onSubmit={handleSubmit}
+        >
+          {/* Form Fields */}
+          {[
+            { label: "First Name", name: "first_name", type: "text" },
+            { label: "Last Name", name: "last_name", type: "text" },
+            { label: "Email Address", name: "email_address", type: "email" },
+            { label: "Phone Number", name: "phone_number", type: "tel" },
+            { label: "Amount (₦)", name: "amount", type: "number" },
+            { label: "Card Number", name: "cardNumber", type: "text" },
+          ].map(({ label, name, type }) => (
+            <div className="mb-4" key={name}>
+              <label htmlFor={name} className="block font-medium mb-2">
+                {label}
+              </label>
+              <input
+                type={type}
+                id={name}
+                name={name}
+                value={formData[name]}
+                onChange={handleChange}
+                className="w-full p-2 border rounded-lg"
+                required
+              />
+            </div>
+          ))}
 
-          {/* Email Address */}
-          <div className="mb-4">
-            <label htmlFor="email" className="block font-medium mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email_address"
-              className="w-full p-2 border rounded-lg"
-              placeholder="Enter Email Address"
-              required
-            />
-          </div>
-
-          {/* Phone Number */}
-          <div className="mb-4">
-            <label htmlFor="phone" className="block font-medium mb-2">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone_number"
-              className="w-full p-2 border rounded-lg"
-              placeholder="Enter Phone Number"
-              required
-            />
-          </div>
-
-          {/* Amount */}
-          <div className="mb-4">
-            <label htmlFor="amount" className="block font-medium mb-2">
-              Amount (₦)
-            </label>
-            <input
-              type="number"
-              id="amount"
-              name="amount"
-              className="w-full p-2 border rounded-lg"
-              placeholder="Enter Amount"
-              required
-            />
-          </div>
-
-          {/* Card Details */}
-          <div className="mb-4">
-            <label htmlFor="cardNumber" className="block font-medium mb-2">
-              Card Number
-            </label>
-            <input
-              type="text"
-              id="cardNumber"
-              name="card_number"
-              className="w-full p-2 border rounded-lg"
-              placeholder="1234 5678 9012 3456"
-              maxLength="16" // Limits the input to 3 characters
-              pattern="\d{16}" // Ensures only 3 numeric digits are allowed
-              title="The CVV must be exactly 16 digits"
-              required
-            />
-          </div>
-
-          {/* Expiry Date */}
           <div className="flex gap-4 mb-4">
-            <div className="w-1/2">
-              <label htmlFor="expiryMonth" className="block font-medium mb-2">
-                Expiry Month
-              </label>
-              <input
-                type="text"
-                id="expiryMonth"
-                name="expiry_month"
-                className="w-full p-2 border rounded-lg"
-                placeholder="MM"
-                maxLength="2" // Limits the input to 3 characters
-                pattern="\d{2}" // Ensures only 3 numeric digits are allowed
-                title="The CVV must be exactly 2 digits"
-                required
-              />
-            </div>
-            <div className="w-1/2">
-              <label htmlFor="expiryYear" className="block font-medium mb-2">
-                Expiry Year
-              </label>
-              <input
-                type="text"
-                id="expiryYear"
-                name="expiry_year"
-                className="w-full p-2 border rounded-lg"
-                placeholder="YYYY"
-                maxLength="4" // Limits the input to 3 characters
-                pattern="\d{4}" // Ensures only 3 numeric digits are allowed
-                title="The CVV must be exactly 4 digits"
-                required
-              />
-            </div>
+            {[
+              { label: "Expiry Month", name: "expiryMonth", placeholder: "MM" },
+              { label: "Expiry Year", name: "expiryYear", placeholder: "YYYY" },
+            ].map(({ label, name, placeholder }) => (
+              <div key={name} className="w-1/2">
+                <label htmlFor={name} className="block font-medium mb-2">
+                  {label}
+                </label>
+                <input
+                  type="text"
+                  id={name}
+                  name={name}
+                  value={formData[name]}
+                  onChange={handleChange}
+                  placeholder={placeholder}
+                  className="w-full p-2 border rounded-lg"
+                  required
+                />
+              </div>
+            ))}
           </div>
 
-          {/* Security Code */}
           <div className="mb-4">
             <label htmlFor="securityCode" className="block font-medium mb-2">
               Security Code (CVV)
             </label>
             <input
-              type="password" // Keeps the input hidden
+              type="password"
               id="securityCode"
-              name="security_code"
+              name="securityCode"
+              value={formData.securityCode}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
-              placeholder="Enter CVV"
-              maxLength="3" // Limits the input to 3 characters
-              pattern="\d{3}" // Ensures only 3 numeric digits are allowed
-              title="The CVV must be exactly 3 digits"
+              maxLength="3"
               required
             />
           </div>
@@ -201,10 +189,21 @@ const Education = () => {
           <button
             type="submit"
             className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition"
+            disabled={loading}
           >
-            Pay Now
+            {loading ? "Processing..." : "Pay Now"}
           </button>
         </form>
+
+        {message && (
+          <p
+            className={`text-center mt-4 ${
+              message.includes("successful") ? "text-green-500" : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </section>
     </div>
   );

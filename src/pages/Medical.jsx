@@ -1,9 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import Header from "../component/Header";
 import health from "../assets/health.jpg";
 import healthissue from "../assets/healthissue.jpg";
 
 const Medical = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    amount: "",
+    cardNumber: "",
+    expiryMonth: "",
+    expiryYear: "",
+    securityCode: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage("");
+
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      amount,
+      cardNumber,
+      expiryMonth,
+      expiryYear,
+      securityCode,
+    } = formData;
+
+    const data = {
+      service_payload: {
+        first_name: firstName,
+        last_name: lastName,
+        email_address: email,
+        phone_number: phone,
+        amount: parseFloat(amount),
+        transaction_reference: Date.now().toString(), // Unique transaction reference
+        currency: "USD",
+        description: "Donation Payment",
+        card: {
+          expiryMonth,
+          expiryYear,
+          securityCode,
+          cardNumber,
+        },
+        callback_url:
+          "https://webhook.site/ed6dd427-dfcf-44a3-8fa7-4cc1ab55e029", // Replace with your callback URL
+      },
+    };
+
+    const config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://cards-live.78financials.com/card_charge/",
+      headers: {
+        Authorization:
+          "Payaza UFo3OC1QS0xJVkUtRjMwODcwNUMtRkY2NC00MEJCLTg1OUUtM0ZCQUI4MTJBNzdC",
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+    };
+
+    try {
+      const response = await axios.request(config);
+      setMessage("Payment successful! Thank you for your donation.");
+      console.log("Payment Response:", response.data);
+    } catch (error) {
+      console.error("Payment Error:", error);
+      setMessage("Payment failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -31,26 +114,13 @@ const Medical = () => {
           />
         </div>
 
-        {/* Donation Call to Action */}
-        <h1 className="text-2xl font-semibold text-center mb-4 text-primary">
-          Help Us Improve Healthcare Access
-        </h1>
-        <p className="text-center mb-2">
-          Your contribution will directly support life-saving healthcare
-          services, medical supplies, and outreach programs for Adebowale Abo
-          Aba. Together, we can make a lasting impact on health and well-being.
-        </p>
-        <p className="text-center mb-8 pt-10 font-bold text-primary">
-          Fill out the form below to join us in transforming healthcare in our
-          community.
-        </p>
-
-        {/* Payment Form */}
         <h2 className="text-2xl font-semibold text-center text-primary mb-6">
           Make a Secure Payment
         </h2>
-        <form className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-2xl">
-          {/* First Name */}
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-2xl"
+        >
           <div className="mb-4">
             <label htmlFor="firstName" className="block font-medium mb-2">
               First Name
@@ -58,14 +128,15 @@ const Medical = () => {
             <input
               type="text"
               id="firstName"
-              name="first_name"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter First Name"
               required
             />
           </div>
 
-          {/* Last Name */}
           <div className="mb-4">
             <label htmlFor="lastName" className="block font-medium mb-2">
               Last Name
@@ -73,14 +144,15 @@ const Medical = () => {
             <input
               type="text"
               id="lastName"
-              name="last_name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Last Name"
               required
             />
           </div>
 
-          {/* Email Address */}
           <div className="mb-4">
             <label htmlFor="email" className="block font-medium mb-2">
               Email Address
@@ -88,14 +160,15 @@ const Medical = () => {
             <input
               type="email"
               id="email"
-              name="email_address"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Email Address"
               required
             />
           </div>
 
-          {/* Phone Number */}
           <div className="mb-4">
             <label htmlFor="phone" className="block font-medium mb-2">
               Phone Number
@@ -103,14 +176,15 @@ const Medical = () => {
             <input
               type="tel"
               id="phone"
-              name="phone_number"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Phone Number"
               required
             />
           </div>
 
-          {/* Amount */}
           <div className="mb-4">
             <label htmlFor="amount" className="block font-medium mb-2">
               Amount (₦)
@@ -119,13 +193,15 @@ const Medical = () => {
               type="number"
               id="amount"
               name="amount"
+              value={formData.amount}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Amount"
               required
             />
           </div>
 
-          {/* Card Details */}
+          {/* Payment Fields */}
           <div className="mb-4">
             <label htmlFor="cardNumber" className="block font-medium mb-2">
               Card Number
@@ -133,17 +209,16 @@ const Medical = () => {
             <input
               type="text"
               id="cardNumber"
-              name="card_number"
+              name="cardNumber"
+              value={formData.cardNumber}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="1234 5678 9012 3456"
-              maxLength="16" // Limits the input to 3 characters
-              pattern="\d{16}" // Ensures only 3 numeric digits are allowed
-              title="The CVV must be exactly 16 digits"
+              maxLength="16"
               required
             />
           </div>
 
-          {/* Expiry Date */}
           <div className="flex gap-4 mb-4">
             <div className="w-1/2">
               <label htmlFor="expiryMonth" className="block font-medium mb-2">
@@ -152,12 +227,12 @@ const Medical = () => {
               <input
                 type="text"
                 id="expiryMonth"
-                name="expiry_month"
+                name="expiryMonth"
+                value={formData.expiryMonth}
+                onChange={handleChange}
                 className="w-full p-2 border rounded-lg"
                 placeholder="MM"
-                maxLength="2" // Limits the input to 3 characters
-                pattern="\d{2}" // Ensures only 3 numeric digits are allowed
-                title="The CVV must be exactly 2 digits"
+                maxLength="2"
                 required
               />
             </div>
@@ -168,43 +243,47 @@ const Medical = () => {
               <input
                 type="text"
                 id="expiryYear"
-                name="expiry_year"
+                name="expiryYear"
+                value={formData.expiryYear}
+                onChange={handleChange}
                 className="w-full p-2 border rounded-lg"
                 placeholder="YYYY"
-                maxLength="4" // Limits the input to 3 characters
-                pattern="\d{4}" // Ensures only 3 numeric digits are allowed
-                title="The CVV must be exactly 4 digits"
+                maxLength="4"
                 required
               />
             </div>
           </div>
 
-          {/* Security Code */}
           <div className="mb-4">
             <label htmlFor="securityCode" className="block font-medium mb-2">
               Security Code (CVV)
             </label>
             <input
-              type="password" // Keeps the input hidden
+              type="password"
               id="securityCode"
-              name="security_code"
+              name="securityCode"
+              value={formData.securityCode}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter CVV"
-              maxLength="3" // Limits the input to 3 characters
-              pattern="\d{3}" // Ensures only 3 numeric digits are allowed
-              title="The CVV must be exactly 3 digits"
+              maxLength="3"
               required
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition"
+            disabled={isLoading}
           >
-            Pay Now
+            {isLoading ? "Processing..." : "Pay Now"}
           </button>
         </form>
+        {message && (
+          <p className="text-center mt-4 font-semibold text-primary">
+            {message}
+          </p>
+        )}
       </section>
     </div>
   );

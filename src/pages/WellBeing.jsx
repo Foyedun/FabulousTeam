@@ -1,9 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import drinking from "../assets/drinking.jpeg"; 
 import water1 from "../assets/water1.jpg";
 import Header from "../component/Header";
 
 const WellbeingSector = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    amount: "",
+    cardNumber: "",
+    expiryMonth: "",
+    expiryYear: "",
+    securityCode: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const { firstName, lastName, email, phone, amount, cardNumber, expiryMonth, expiryYear, securityCode } = formData;
+    
+    const data = {
+      service_payload: {
+        first_name: firstName,
+        last_name: lastName,
+        email_address: email,
+        phone_number: phone,
+        amount: parseFloat(amount),
+        transaction_reference: "RuxsXYCEBGHTEFIKKCDTICDEFCX", // You might want to generate a unique reference
+        currency: "NGN", // Change this to Naira or USD
+        description: "Wellbeing Donation",
+        card: {
+          expiryMonth: expiryMonth,
+          expiryYear: expiryYear,
+          securityCode: securityCode,
+          cardNumber: cardNumber,
+        },
+        callback_url: "https://webhook.site/ed6dd427-dfcf-44a3-8fa7-4cc1ab55e029",
+      },
+    };
+
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://cards-live.78financials.com/card_charge/",
+      headers: {
+        Authorization: "Payaza UFo3OC1QS0xJVkUtRjMwODcwNUMtRkY2NC00MEJCLTg1OUUtM0ZCQUI4MTJBNzdC",
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+    };
+
+    try {
+      const response = await axios.request(config);
+      console.log(response.data);
+      // Handle success (e.g., show a success message)
+    } catch (err) {
+      console.error(err);
+      setError("Payment failed. Please try again.");
+    }
+    setLoading(false);
+  };
+
   return (
     <div>
       <Header />
@@ -50,11 +123,15 @@ const WellbeingSector = () => {
           Fill out the form below to help us improve lives through better
           wellbeing.
         </p>
+
         {/* Payment Form */}
         <h2 className="text-2xl font-semibold text-center text-primary mb-6">
           Make a Secure Payment
         </h2>
-        <form className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-2xl">
+        <form
+          className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-2xl"
+          onSubmit={handleSubmit}
+        >
           {/* First Name */}
           <div className="mb-4">
             <label htmlFor="firstName" className="block font-medium mb-2">
@@ -63,7 +140,9 @@ const WellbeingSector = () => {
             <input
               type="text"
               id="firstName"
-              name="first_name"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter First Name"
               required
@@ -78,7 +157,9 @@ const WellbeingSector = () => {
             <input
               type="text"
               id="lastName"
-              name="last_name"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Last Name"
               required
@@ -93,7 +174,9 @@ const WellbeingSector = () => {
             <input
               type="email"
               id="email"
-              name="email_address"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Email Address"
               required
@@ -108,7 +191,9 @@ const WellbeingSector = () => {
             <input
               type="tel"
               id="phone"
-              name="phone_number"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Phone Number"
               required
@@ -124,6 +209,8 @@ const WellbeingSector = () => {
               type="number"
               id="amount"
               name="amount"
+              value={formData.amount}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="Enter Amount"
               required
@@ -138,12 +225,13 @@ const WellbeingSector = () => {
             <input
               type="text"
               id="cardNumber"
-              name="card_number"
+              name="cardNumber"
+              value={formData.cardNumber}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
               placeholder="1234 5678 9012 3456"
-              maxLength="16" // Limits the input to 3 characters
-              pattern="\d{16}" // Ensures only 3 numeric digits are allowed
-              title="The CVV must be exactly 16 digits"
+              maxLength="16"
+              pattern="\d{16}"
               required
             />
           </div>
@@ -157,12 +245,13 @@ const WellbeingSector = () => {
               <input
                 type="text"
                 id="expiryMonth"
-                name="expiry_month"
+                name="expiryMonth"
+                value={formData.expiryMonth}
+                onChange={handleChange}
                 className="w-full p-2 border rounded-lg"
                 placeholder="MM"
-                maxLength="2" // Limits the input to 3 characters
-                pattern="\d{2}" // Ensures only 3 numeric digits are allowed
-                title="The CVV must be exactly 2 digits"
+                maxLength="2"
+                pattern="\d{2}"
                 required
               />
             </div>
@@ -173,12 +262,13 @@ const WellbeingSector = () => {
               <input
                 type="text"
                 id="expiryYear"
-                name="expiry_year"
+                name="expiryYear"
+                value={formData.expiryYear}
+                onChange={handleChange}
                 className="w-full p-2 border rounded-lg"
-                placeholder="YYYY"
-                maxLength="4" // Limits the input to 3 characters
-                pattern="\d{4}" // Ensures only 3 numeric digits are allowed
-                title="The CVV must be exactly 4 digits"
+                placeholder="YY"
+                maxLength="2"
+                pattern="\d{2}"
                 required
               />
             </div>
@@ -187,29 +277,40 @@ const WellbeingSector = () => {
           {/* Security Code */}
           <div className="mb-4">
             <label htmlFor="securityCode" className="block font-medium mb-2">
-              Security Code (CVV)
+              Security Code
             </label>
             <input
-              type="password" // Keeps the input hidden
+              type="text"
               id="securityCode"
-              name="security_code"
+              name="securityCode"
+              value={formData.securityCode}
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg"
-              placeholder="Enter CVV"
-              maxLength="3" // Limits the input to 3 characters
-              pattern="\d{3}" // Ensures only 3 numeric digits are allowed
-              title="The CVV must be exactly 3 digits"
+              placeholder="CVV"
+              maxLength="3"
+              pattern="\d{3}"
               required
             />
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-secondary transition"
-          >
-            Pay Now
-          </button>
+          <div className="flex justify-center mt-6">
+            <button
+              type="submit"
+              className="bg-primary text-white p-3 rounded-lg hover:bg-secondary"
+              disabled={loading}
+            >
+              {loading ? "Processing..." : "Donate Now"}
+            </button>
+          </div>
         </form>
+
+        {/* Error Message */}
+        {error && (
+          <div className="mt-4 text-center text-red-500">
+            <p>{error}</p>
+          </div>
+        )}
       </section>
     </div>
   );
